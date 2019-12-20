@@ -1,0 +1,105 @@
+<style lang="less">
+  .userAvatar{
+    position: relative;
+    width: 750rpx;
+    height: 320rpx;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-avatar{
+    overflow:hidden;
+    display: block;
+    width: 160rpx;
+    height: 160rpx;
+    margin: 20rpx;
+    margin-top: 50rpx;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  .flex{
+    display: flex;
+  }
+  .flexDirColumn{
+    flex-direction: column;
+  }
+  .flexAround{
+    justify-content: space-around;
+  }
+  .user{
+    height: 100%;
+    background:#F5F5F5;
+    .userInfo{
+      padding:10rpx 10rpx;
+      height:400rpx;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      border-bottom-left-radius:20rpx;
+      border-bottom-right-radius:20rpx;
+    }
+
+    .funtions{
+      display:flex;
+      flex-wrap:wrap;
+      margin:-35rpx 13rpx 0rpx 13rpx;
+      padding:10rpx;
+      border-radius:43rpx;
+      justify-content:space-around;
+      background:white;
+      min-height:300rpx;
+      .function{
+          image{
+            width:70rpx;
+            height:70rpx;
+          }
+        .font{
+          white-space:nowrap;
+          color:#4D4D4D;
+          font-size:30rpx;
+        }
+      }
+    }
+  }
+
+</style>
+<template>
+  <div class="user">
+    <div class="flex userInfo colorBack" >
+        <div class="userAvatar">
+          <open-data type="userAvatarUrl" class="user-avatar"></open-data>
+          <open-data type="userNickName"></open-data>
+          <div>搞笑大师</div>
+        </div>
+    </div>
+    <div class="funtions">
+        <div class="function">
+          <image src="../../img/icon/collect.png"></image>
+          <div class="font">收藏</div>
+        </div>
+    </div>
+  </div>
+</template>
+<script>
+  import wepy from '@wepy/core'
+  wepy.page({
+    config: {
+      navigationBarTitleText: '我的'
+    },
+    hooks: {
+
+    },
+    data: {
+
+    },
+  })
+</script>
+<config>
+  {
+    navigationBarTitleText: '我的',
+    usingComponents: {
+    }
+  }
+</config>

@@ -1,0 +1,16 @@
+
+<view class="user">
+  <view class="flex userInfo colorBack">
+      <view class="userAvatar">
+        <open-data type="userAvatarUrl" class="user-avatar"></open-data>
+        <open-data type="userNickName"></open-data>
+        <view>搞笑大师</view>
+      </view>
+  </view>
+  <view class="funtions">
+      <view class="function">
+        <image src="../../img/icon/collect.png"></image>
+        <view class="font">收藏</view>
+      </view>
+  </view>
+</view>

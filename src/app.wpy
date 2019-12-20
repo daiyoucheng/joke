@@ -1,0 +1,96 @@
+<style lang="less">
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+page{
+  height: 100%;
+}
+.colorTheme{
+  background: #FEBE11;
+}
+  .colorBack{
+    background: #FEBE11;
+  }
+</style>
+
+<script>
+import wepy from '@wepy/core';
+import eventHub from './common/eventHub';
+import vuex from '@wepy/x';
+wepy.use(vuex);
+wepy.app({
+  hooks: {
+    // App 级别 hook，对整个 App 生效
+    // 同时存在 Page hook 和 App hook 时，优先执行 Page hook，返回值再交由 App hook 处
+    'before-setData': function (dirty) {
+      console.log('setData dirty: ', dirty);
+      return dirty;
+    }
+  },
+  globalData: {
+    userInfo: null
+  },
+
+  onLaunch() {
+    wx.cloud.init()
+    this.testAsync();
+    eventHub.$on('app-launch', (...args) => {
+      console.log('app-launch event emitted, the params are:');
+      console.log(args);
+    });
+  },
+
+  methods: {
+
+    sleep (s) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('promise resolved')
+        }, s * 1000)
+      })
+    },
+
+    async testAsync () {
+      let d = await this.sleep(3);
+      console.log(d);
+    }
+  }
+});
+</script>
+<config>
+{
+    pages: [
+      'pages/index',
+      'pages/mine/mine',
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#FEBE11',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'white'
+    },
+    tabBar:{
+      color: '#999',
+      selectedColor: '#FEBE11',
+      backgroundColor: '#fff',
+      borderStyle: 'black',
+      list: [{
+      "text": "首页",
+       "pagePath": 'pages/index',
+        selectedIconPath: '/img/tabbars/me_active.png',
+        iconPath: '/img/tabbars/me.png',
+      },
+      {
+      "text": "个人",
+      "pagePath": 'pages/mine/mine',
+      selectedIconPath: '/img/tabbars/me_active.png',
+      iconPath: '/img/tabbars/me.png',
+      }]
+    },
+}
+</config>

@@ -1,0 +1,24 @@
+<!----------   wxs start ----------->
+<wxs module="m1">
+"use strict";
+
+var getTime = function getTime(time) {
+  var date = getDate(time);
+  var hour = date.getHours();
+  var mins = date.getMinutes();
+  var sec = date.getSeconds();
+  var milli = date.getMilliseconds();
+  return "".concat(hour, ":").concat(mins, ":").concat(sec, ".").concat(milli);
+};
+
+module.exports.getTime = getTime;
+</wxs>
+<!----------   wxs end   ----------->
+
+<view class="container index">
+      <view class="flex">
+        <view wx:for="{{ dailyJokeList }}" wx:for-index="index" wx:for-item="item" wx:key="index" data-wpy-evt="7-38" bindtap="_proxy" data-wpytap-a="{{ item }}" class="box-container {{item.active?'active':''}}">
+          <view class="border-bottom">{{item.name}}</view>
+        </view>
+      </view>
+</view>
